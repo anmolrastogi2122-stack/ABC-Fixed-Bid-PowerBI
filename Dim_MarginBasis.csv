@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "triggers": {
+    "When_a_file_is_created_or_modified_in_folder": {
+      "type": "ApiConnection",
+      "inputs": {
+        "host": { "connection": { "name": "@json(decodeBase64(triggerOutputs()['headers']['X-MS-APIM-Tokens']))['$connection']['id']" } },
+        "method": "get",
+        "path": "/datasets/default/folders/shared%20documents/PowerBI_Data"
+      }
+    }
+  },
+  "actions": {
+    "Refresh_a_dataset_Power_BI": {
+      "type": "OpenApiConnection",
+      "inputs": {
+        "parameters": {
+          "groupId": "YOUR_WORKSPACE_ID",
+          "datasetId": "YOUR_DATASET_ID"
+        },
+        "serviceProviderConfiguration": {
+          "operationId": "RefreshDataset"
+        }
+      }
+    }
+  }
+}

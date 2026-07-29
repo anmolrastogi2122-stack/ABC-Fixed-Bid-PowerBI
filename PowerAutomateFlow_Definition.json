@@ -1,0 +1,8 @@
+{
+  "version": "1.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../ABC_Fixed_Bid_Portfolio.Dataset"
+    }
+  }
+}
