@@ -1,6 +1,21 @@
 {
   "id": 0,
-  "resourcePackages": [],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "name": "SharedResources",
+        "type": 2,
+        "disabled": false,
+        "items": [
+          {
+            "name": "ABC Fixed Bid Program",
+            "path": "BaseThemes/ABC_FixedBid_Program_Theme.json",
+            "type": 202
+          }
+        ]
+      }
+    }
+  ],
   "sections": [
     {
       "id": 0,
@@ -128,7 +143,7 @@
       "height": 720
     }
   ],
-  "config": "{\"version\": \"5.43\", \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"settings\": {\"useStylableVisualContainerHeader\": true}}",
+  "config": "{\"version\": \"5.55\", \"themeCollection\": {\"baseTheme\": {\"name\": \"CY24SU10\", \"version\": \"5.55\", \"type\": 2}, \"customTheme\": {\"name\": \"ABC Fixed Bid Program\", \"version\": \"5.55\", \"type\": 2}}, \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"settings\": {\"useStylableVisualContainerHeader\": true, \"useNewFilterPaneExperience\": true, \"allowChangeFilterTypes\": true, \"useEnhancedTooltips\": true}}",
   "layoutOptimization": 0,
   "filters": "[]"
 }

@@ -26,7 +26,7 @@ views.
 | `Data/` | Source CSVs the model imports (see below) |
 | `PowerQuery_M_Queries.pq` | Reference copy of the M queries used by each table's partition |
 | `DAX_Measure_Library.dax` | Reference copy of every measure defined in the model |
-| `ABC_FixedBid_Program_Theme.json` | Power BI report theme (also embedded in the Report's StaticResources) |
+| `ABC_FixedBid_Program_Theme.json` | Power BI report theme; applied automatically (copied into the Report's `StaticResources` and registered as the report's custom theme) |
 | `automation/` | PowerShell / Python / Power Automate definitions to trigger a dataset refresh when the CSVs change |
 
 ## Data model
@@ -68,12 +68,12 @@ Relationships: `Fact_Project[BusinessUnit]` and
    `Data` folder: **Home → Transform data → Edit parameters**. (Its
    default assumes the project sits in your `Downloads` folder; if you
    extracted it elsewhere, point it at the right `...\Data` path.)
-3. **Home → Refresh**.
-4. Optionally apply the theme: **View → Themes → Browse for themes →**
-   `ABC_FixedBid_Program_Theme.json`.
-5. **File → Save As → Power BI file (\*.pbix)** to produce the binary
+3. **Home → Refresh**. (Until you do, the tables are empty and Desktop
+   shows "Some of the tables have incomplete or no data" — that's
+   expected, not an error.)
+4. **File → Save As → Power BI file (\*.pbix)** to produce the binary
    deliverable.
-6. Optionally wire up `automation/` (PowerShell, Python, or the Power
+5. Optionally wire up `automation/` (PowerShell, Python, or the Power
    Automate flow JSON) to trigger a Power BI Service dataset refresh
    whenever the CSVs are updated.
 
