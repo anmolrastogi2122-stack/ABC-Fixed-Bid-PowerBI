@@ -1,0 +1,5 @@
+Population,SortOrder,Description
+"Overall Portfolio",1,"All active and completed fixed-bid projects in the program"
+"Program Assessment Completed",2,"Projects that have finished the fixed-bid assessment stage"
+"Active / In-Progress",3,"Projects currently in delivery"
+"Completed Projects",4,"Projects that have closed out"

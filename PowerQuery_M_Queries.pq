@@ -1,39 +1,58 @@
-SrNo,ProjectName,RevenueGroup,BusinessUnit,LifecycleMarginPct,YTDMarginPct,RiskScore,WorkAcceptanceGapPct,UnbilledEffortPct,NetProgramScore
-1,"P0","Small","Gamma",0.25,0.18,1,,,4
-2,"P1","Small","Xi",0.23,0.20,0.4,,,4
-3,"p2","Medium","Gamma",0.07,0.08,0,,,4
-4,"P3","Small","Theta",0.30,0.21,1,,,2
-5,"P4","Small","Gamma",-0.19,-0.45,0,0.08,,4
-6,"P5","Large","Gamma",0.01,-4.53,0.5,,,4
-7,"P6","Small","Beta",0.06,0.01,0,,,4
-8,"P7","Small","Gamma",0.36,0.37,0,,,0
-9,"P8","Small","Nu",0.73,-0.21,0.4,,,4
-10,"P9","Small","Mu",0.48,0.40,0,,,0
-11,"P10","Huge","Beta",0.29,0.36,0,,,0
-12,"P11","Small","Nu",0.44,0.52,0.4,,0.15,4
-13,"P12","Medium","Beta",0.33,0.33,0,,,0
-14,"P13","Small","Epsilon",0.54,0.44,,,,4
-15,"P14","Small","Eta",0.48,0.35,0,,,0
-16,"P15","Small","Zeta",-0.53,-0.41,0,,,4
-17,"P16","Medium","Zeta",0.37,0.40,0.1,-0.18,,0.1
-18,"P17","Medium","Gamma",-0.57,-2.44,0,,,4
-19,"P18","Small","Zeta",0.37,0.41,0,,,0
-20,"P19","Huge","Epsilon",0.29,0.44,0.5,,,0.5
-21,"P20","Small","Pi",-0.74,-2.21,2.9,0.06,,4
-22,"P21","Huge","Alpha",0.36,-2.44,0.3,0.06,-0.03,4
-23,"P22","Small","Omicron",0.32,0.33,0.2,,,0.2
-24,"P23","Small","Nu",-0.07,-2.37,0,,,4
-25,"P24","Medium","Delta",0.29,0.08,1.1,,,4
-26,"P25","Small","Delta",0.35,0.28,0,,,2
-27,"P26","Medium","Delta",0.35,0.30,0,,,2
-28,"P27","Medium","Delta",0.60,0.66,0,,,0
-29,"P28","Small","Delta",0.45,0.45,0,,,0
-30,"P29","Small","Epsilon",0.36,0.43,0,,,0
-31,"P30","Small","Beta",0.18,0.07,2.9,,0.17,4
-32,"P31","Small","Zeta",0.31,0.29,0,,,2
-33,"P32","Small","Gamma",-0.07,-0.06,0,,,4
-34,"P33","Medium","Alpha",0.18,0.12,2.8,0.18,,4
-35,"P34","Small","Alpha",-0.01,-0.56,0,0.38,,4
-36,"P35","Small","Epsilon",0.77,0.75,0.3,,,0.3
-37,"P36","Small","Beta",0.20,0.23,0.6,,,2
-38,"P37","Small","Zeta",0.58,0.58,0,,,0
+// ============================================================================
+// ABC Fixed Bid Program — Power Query M Reference
+// Reference copy of the M queries defined in ABC_Fixed_Bid_Portfolio.Dataset.
+// Every table shares one text parameter, TargetFolder, that points at the
+// folder holding the CSVs in /Data. Change it in Power BI Desktop's
+// Transform Data > Manage Parameters once, and every query below follows.
+// ============================================================================
+
+// ---- Parameter --------------------------------------------------------------
+// TargetFolder = "C:\PowerBI\ABC_FixedBid\Data"
+
+// ---- Fact_Project ------------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents(TargetFolder & "\Fact_Project.csv"),[Delimiter=",", Columns=21, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProjectKey", type text}, {"WBS_ID", type text}, {"ProjectName", type text}, {"Status", type text}, {"RevenueGroup", type text}, {"MultiWBS", type text}, {"BusinessUnit", type text}, {"AllBUs", type text}, {"Account", type text}, {"CCS", type text}, {"PECO", type text}, {"Program_Onboarded", type text}, {"ProgramStage", type text}, {"LifecycleRevenue", type number}, {"LifecycleCost", type number}, {"ActualRevenue", type number}, {"ActualCost", type number}, {"YTDRevenue", type number}, {"YTDCost", type number}, {"FutureRevenue", type number}, {"FutureCost", type number}})
+in
+    #"Changed Type"
+
+// ---- Fact_MonthlyTrend --------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents(TargetFolder & "\Fact_MonthlyTrend.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Population", type text}, {"MonthLabel", type text}, {"MonthDate", type date}, {"Revenue", type number}, {"Cost", type number}, {"MarginPct", type number}})
+in
+    #"Changed Type"
+
+// ---- Fact_BusinessUnit ---------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents(TargetFolder & "\Fact_BusinessUnit.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"BusinessUnit", type text}, {"RevenueContributionPct", type number}, {"YTDMarginPct", type number}, {"YTDRevenue", type number}, {"YTDCost", type number}, {"LifecycleMarginPct", type number}, {"LifecycleRevenue", type number}, {"LifecycleCost", type number}, {"ActualMarginPct", type number}, {"ActualRevenue", type number}, {"ActualCost", type number}})
+in
+    #"Changed Type"
+
+// ---- Fact_AssessmentKPI ---------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents(TargetFolder & "\Fact_AssessmentKPI.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SrNo", Int64.Type}, {"ProjectName", type text}, {"RevenueGroup", type text}, {"BusinessUnit", type text}, {"LifecycleMarginPct", type number}, {"YTDMarginPct", type number}, {"RiskScore", type number}, {"WorkAcceptanceGapPct", type number}, {"UnbilledEffortPct", type number}, {"NetProgramScore", type number}})
+in
+    #"Changed Type"
+
+// ---- Dim_Census -------------------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents(TargetFolder & "\Dim_Census.csv"),[Delimiter=",", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Population", type text}, {"SortOrder", Int64.Type}, {"Description", type text}})
+in
+    #"Changed Type"
+
+// ---- Dim_MarginBasis ---------------------------------------------------------------
+let
+    Source = Csv.Document(File.Contents(TargetFolder & "\Dim_MarginBasis.csv"),[Delimiter=",", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"MarginBasis", type text}, {"SortOrder", Int64.Type}})
+in
+    #"Changed Type"

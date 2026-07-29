@@ -1,7 +1,7 @@
-""
+"""
 Python Script: Power BI REST API Dataset Refresh Trigger
 Requirements: pip install requests msal
-""
+"""
 import requests
 from msal import ConfidentialClientApplication
 
@@ -24,14 +24,14 @@ token_result = app.acquire_token_for_client(scopes=scopes)
 
 if "access_token" in token_result:
     access_token = token_result["access_token"]
-    
+
     # 2. Call Power BI REST API to trigger dataset refresh
     refresh_url = f"https://api.powerbi.com/v1.0/myorg/groups/{WORKSPACE_ID}/datasets/{DATASET_ID}/refreshes"
     headers = {
         "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json"
     }
-    
+
     response = requests.post(refresh_url, headers=headers)
     if response.status_code in [200, 202]:
         print("Success! Power BI Dataset refresh triggered successfully.")
