@@ -1,0 +1,208 @@
+table Fact_Project
+	lineageTag: 35a79785-be43-40c4-9de2-1cc3f44e3d35
+
+	column ProjectKey
+		dataType: string
+		lineageTag: ad25da73-c8eb-41d5-83f6-2346ada8105c
+		summarizeBy: none
+		sourceColumn: ProjectKey
+	column WBS_ID
+		dataType: string
+		lineageTag: 7f56577d-d4a4-44cf-8e0c-030d45935a3c
+		summarizeBy: none
+		sourceColumn: WBS_ID
+	column ProjectName
+		dataType: string
+		lineageTag: 1dc1dd4c-c3ce-413f-be94-3108438f1d14
+		summarizeBy: none
+		sourceColumn: ProjectName
+	column Status
+		dataType: string
+		lineageTag: 1df22789-5287-4ac1-9a71-178d9faf6134
+		summarizeBy: none
+		sourceColumn: Status
+	column RevenueGroup
+		dataType: string
+		lineageTag: 97ad6d62-d038-4e62-acbf-8d93378ac163
+		summarizeBy: none
+		sourceColumn: RevenueGroup
+	column MultiWBS
+		dataType: string
+		lineageTag: c601623e-16ad-4433-ab56-148d70d45b51
+		summarizeBy: none
+		sourceColumn: MultiWBS
+	column BusinessUnit
+		dataType: string
+		lineageTag: 753e28df-4df9-41b1-ab2f-9c4e11dbfd3a
+		summarizeBy: none
+		sourceColumn: BusinessUnit
+	column AllBUs
+		dataType: string
+		lineageTag: e7838304-21c1-4593-81ce-3413aa3e0d3f
+		summarizeBy: none
+		sourceColumn: AllBUs
+	column Account
+		dataType: string
+		lineageTag: d26def61-6b26-4dac-8be4-ffa8bc1d6d86
+		summarizeBy: none
+		sourceColumn: Account
+	column CCS
+		dataType: string
+		lineageTag: 8841b27a-211f-4e7f-b3e1-5f0e009de88a
+		summarizeBy: none
+		sourceColumn: CCS
+	column PECO
+		dataType: string
+		lineageTag: c4e5dee1-5dec-4d86-b1af-b1f9ab9dd90a
+		summarizeBy: none
+		sourceColumn: PECO
+	column Program_Onboarded
+		dataType: string
+		lineageTag: d2d647f9-54f6-43f9-9208-80ec53ee61eb
+		summarizeBy: none
+		sourceColumn: Program_Onboarded
+	column ProgramStage
+		dataType: string
+		lineageTag: a2441984-eb2b-4f33-a58b-dbc35db0dfce
+		summarizeBy: none
+		sourceColumn: ProgramStage
+	column LifecycleRevenue
+		dataType: double
+		formatString: 0.00
+		lineageTag: 66ddf772-429d-4da2-8acc-dbaa91c38e06
+		summarizeBy: sum
+		sourceColumn: LifecycleRevenue
+	column LifecycleCost
+		dataType: double
+		formatString: 0.00
+		lineageTag: 9daa1696-b2fd-4bf8-b82a-f8a484240c5c
+		summarizeBy: sum
+		sourceColumn: LifecycleCost
+	column ActualRevenue
+		dataType: double
+		formatString: 0.00
+		lineageTag: a4699468-7777-4a81-8dfd-e0ad447c21d5
+		summarizeBy: sum
+		sourceColumn: ActualRevenue
+	column ActualCost
+		dataType: double
+		formatString: 0.00
+		lineageTag: 6de4f655-577b-4e36-a33f-88de5db725f0
+		summarizeBy: sum
+		sourceColumn: ActualCost
+	column YTDRevenue
+		dataType: double
+		formatString: 0.00
+		lineageTag: 23e11723-d282-454e-80a6-44060956b3b4
+		summarizeBy: sum
+		sourceColumn: YTDRevenue
+	column YTDCost
+		dataType: double
+		formatString: 0.00
+		lineageTag: b9e67390-84dc-4762-a029-f20857588b51
+		summarizeBy: sum
+		sourceColumn: YTDCost
+	column FutureRevenue
+		dataType: double
+		formatString: 0.00
+		lineageTag: f1592187-c975-43b1-a41b-242469f7b5fa
+		summarizeBy: sum
+		sourceColumn: FutureRevenue
+	column FutureCost
+		dataType: double
+		formatString: 0.00
+		lineageTag: 8f465c58-5270-4410-9e14-b7996775cbaa
+		summarizeBy: sum
+		sourceColumn: FutureCost
+	measure 'Total Projects' = COUNTROWS('Fact_Project')
+		lineageTag: 0962dcec-6864-4fac-91d8-06421d26c68f
+	measure 'Active Projects' = CALCULATE([Total Projects], 'Fact_Project'[Status] = "Active")
+		lineageTag: f6aad412-0835-4f5c-9538-1c0bf57eee06
+	measure 'Completed Projects' = CALCULATE([Total Projects], 'Fact_Project'[Status] = "Completed")
+		lineageTag: 62739710-a4c5-424d-9f7a-1e5eee64faa8
+	measure 'Total Lifecycle Revenue' = SUM('Fact_Project'[LifecycleRevenue])
+		formatString: $#,##0.0,,"M"
+		lineageTag: f051d178-062e-4049-a7c4-ec73cf0dd431
+	measure 'Total Lifecycle Cost' = SUM('Fact_Project'[LifecycleCost])
+		formatString: $#,##0.0,,"M"
+		lineageTag: 11844276-884c-4c12-bdc5-35b004f86c90
+	measure 'Lifecycle Margin %' = 
+		VAR Rev = [Total Lifecycle Revenue]
+		VAR Cost = [Total Lifecycle Cost]
+		RETURN DIVIDE(Rev - Cost, Rev, 0)
+		formatString: 0.0%
+		lineageTag: 1ddfa811-e5f3-4a5c-8ff2-6045f7ebcaa2
+	measure 'Total Actual Revenue' = SUM('Fact_Project'[ActualRevenue])
+		formatString: $#,##0.0,,"M"
+		lineageTag: fd2feed3-f949-4974-848e-cb3f7d388197
+	measure 'Total Actual Cost' = SUM('Fact_Project'[ActualCost])
+		formatString: $#,##0.0,,"M"
+		lineageTag: 4f443279-845b-4758-8a3a-41c49a25fc4c
+	measure 'Actual Margin %' = 
+		VAR Rev = [Total Actual Revenue]
+		VAR Cost = [Total Actual Cost]
+		RETURN DIVIDE(Rev - Cost, Rev, 0)
+		formatString: 0.0%
+		lineageTag: f3cb2de1-8d8d-4e0e-a302-72485f50c260
+	measure 'Total YTD Revenue' = SUM('Fact_Project'[YTDRevenue])
+		formatString: $#,##0.0,,"M"
+		lineageTag: 8e279cb5-fd59-45a4-bb73-778e32a4b6f3
+	measure 'Total YTD Cost' = SUM('Fact_Project'[YTDCost])
+		formatString: $#,##0.0,,"M"
+		lineageTag: c016580f-bc0b-4057-a189-bd0feabe10ad
+	measure 'YTD Margin %' = 
+		VAR Rev = [Total YTD Revenue]
+		VAR Cost = [Total YTD Cost]
+		RETURN DIVIDE(Rev - Cost, Rev, 0)
+		formatString: 0.0%
+		lineageTag: 6d6a2cdc-89c0-44ff-98e9-47a53302ae39
+	measure 'Total Future Revenue' = SUM('Fact_Project'[FutureRevenue])
+		formatString: $#,##0.0,,"M"
+		lineageTag: 3456aab1-ba04-4cec-972c-c617be4ead3a
+	measure 'Total Future Cost' = SUM('Fact_Project'[FutureCost])
+		formatString: $#,##0.0,,"M"
+		lineageTag: 29da1ae0-faab-4e5a-af8d-fa7f430d0d97
+	measure 'Future Margin %' = 
+		VAR Rev = [Total Future Revenue]
+		VAR Cost = [Total Future Cost]
+		RETURN DIVIDE(Rev - Cost, Rev, 0)
+		formatString: 0.0%
+		lineageTag: 8df4fce0-375c-4b24-b3df-631004f907a9
+	measure 'Selected Margin Basis' = SELECTEDVALUE('Dim_MarginBasis'[MarginBasis], "Actual")
+		lineageTag: 1060d6e9-7c05-44c0-9473-f43a8f17cd74
+	measure 'Selected Revenue' = 
+		SWITCH(
+			[Selected Margin Basis],
+			"Lifecycle", [Total Lifecycle Revenue],
+			"YTD", [Total YTD Revenue],
+			"Future", [Total Future Revenue],
+			[Total Actual Revenue]
+		)
+		formatString: $#,##0.0,,"M"
+		lineageTag: c53ef4ad-66fe-45b0-9931-59e6312c05b6
+	measure 'Selected Cost' = 
+		SWITCH(
+			[Selected Margin Basis],
+			"Lifecycle", [Total Lifecycle Cost],
+			"YTD", [Total YTD Cost],
+			"Future", [Total Future Cost],
+			[Total Actual Cost]
+		)
+		formatString: $#,##0.0,,"M"
+		lineageTag: e4652e3a-af62-4ee2-b653-a2cfc58d0d17
+	measure 'Selected Margin %' = 
+		VAR Rev = [Selected Revenue]
+		VAR Cost = [Selected Cost]
+		RETURN DIVIDE(Rev - Cost, Rev, 0)
+		formatString: 0.0%
+		lineageTag: bc1a9e91-9836-4e8c-81c7-62083fe3c77c
+
+	partition Fact_Project = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(TargetFolder & "\Fact_Project.csv"),[Delimiter=",", Columns=21, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"ProjectKey", type text}, {"WBS_ID", type text}, {"ProjectName", type text}, {"Status", type text}, {"RevenueGroup", type text}, {"MultiWBS", type text}, {"BusinessUnit", type text}, {"AllBUs", type text}, {"Account", type text}, {"CCS", type text}, {"PECO", type text}, {"Program_Onboarded", type text}, {"ProgramStage", type text}, {"LifecycleRevenue", type number}, {"LifecycleCost", type number}, {"ActualRevenue", type number}, {"ActualCost", type number}, {"YTDRevenue", type number}, {"YTDCost", type number}, {"FutureRevenue", type number}, {"FutureCost", type number}})
+				in
+				    #"Changed Type"

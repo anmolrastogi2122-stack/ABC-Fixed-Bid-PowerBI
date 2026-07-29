@@ -1,0 +1,52 @@
+ProjectKey,WBS_ID,ProjectName,Status,RevenueGroup,MultiWBS,BusinessUnit,AllBUs,Account,CCS,PECO,Program_Onboarded,ProgramStage,LifecycleRevenue,LifecycleCost,ActualRevenue,ActualCost,YTDRevenue,YTDCost,FutureRevenue,FutureCost
+"2,215|Active","2,215","PRJ-2,215","Active","Huge","No","Gamma","","Zinnia","CCS Owner Alpha","Sasha Emberly","Yes","Assessment Scheduled",4.09,3.64,0.74,0.71,0.74,0.71,3.35,2.94
+"398|Active","398","PRJ-398","Active","Huge","No","Delta","","Rose","CCS Owner Beta","Greta Jarrow","Yes","Assessment Scheduled",6.59,5.86,7.26,5.84,1.68,1.65,0,0.02
+"D2|Active","D2","PRJ-D2","Active","Huge","Yes","Eta","Iota / Nedeau / Eta / Eta","Lily","CCS Owner Gamma","Mira Eastwood","Yes","On Hold",4.47,3.55,3.95,2.94,0.44,0.85,0.53,0.6
+"2,633|Active","2,633","P19","Active","Huge","No","Epsilon","","Gardenia","CCS Owner Delta","Farah Chastain","Yes","Assessment Completed",4.67,3.3,2.72,1.93,1.64,0.92,1.69,1.37
+"1,312|Active","1,312","PRJ-1,312","Active","Huge","No","Gamma","","Tulip","CCS Owner Epsilon","Ines Blackwood","No","Out of Scope",2.56,1.78,2.42,1.73,0.64,0.44,0.14,0.05
+"D52|Active","D52","PRJ-D52","Active","Huge","Yes","Beta","Iota / Beta","Orchid","Alex Vance (CCS)","Kiran Lockhart","Yes","Target Date Communicated",3.22,2.22,1.45,0.94,1.28,0.78,1.53,1.28
+"D85|Active","D85","PRJ-D85","Active","Huge","Yes","Eta","Iota / Eta","Jasmine","Morgan Blake (CCS)","Noor Prescott","No","Out of Scope",4.22,2.81,3.2,1.88,1.37,0.76,0.15,0.93
+"34|Active","34","P21","Active","Huge","No","Alpha","","Lotus","Jordan Taylor (CCS)","Selma Mowbray","Yes","Assessment Completed",4.37,2.81,1.51,2.77,0.1,0.35,2.47,0.04
+"53|Active","53","PRJ-53","Active","Huge","No","Alpha","","Lotus","Sam Quinn (CCS)","Anika Cormier","No","Out of Scope",6.6,3.46,3.97,2.06,2.25,1.02,2.28,1.39
+"D40|Active","D40","PRJ-D40","Active","Huge","Yes","Alpha","Alpha / Alpha","Sunflower","Sam Quinn (CCS)","Freya Ellery","Yes","On Hold",17.43,6.65,5.9,3.41,3.54,2.2,9.98,3.24
+"D5|Active","D5","PRJ-D5","Active","Huge","Yes","Theta","Theta / Theta / Zeta / Iota / Theta / Theta / Iota / Theta / Theta","Primrose","Taylor Reed (CCS)","Rhea Fenwick","Yes","Assessment Scheduled",10.85,3.19,3.7,3.11,0.41,0.34,7.2,0.07
+"D92|Active","D92","PRJ-D92","Active","Large","Yes","Eta","Eta / Eta","Petunia","Casey Drew (CCS)","Kenji Jennings","Yes","Correction Pending",1.55,2.37,1.45,2.26,0.2,0.27,0.08,0.11
+"D65|Active","D65","PRJ-D65","Active","Large","Yes","Theta","Theta / Zeta / Theta / Kappa / Theta / Kappa / Theta","Primrose","Taylor Reed (CCS)","Anton Chastain","No","Out of Scope",6.61,7.71,6.63,7.42,1.25,1.44,0.08,0.29
+"177|Active","177","P5","Active","Large","No","Gamma","","Orchid","Avery Brooks (CCS)","Stefan Braddock","Yes","Assessment Completed",2.1,2.08,1.05,1.87,0.14,0.76,1.05,0.21
+"1,248|Active","1,248","PRJ-1,248","Active","Large","No","Gamma","","Daisy","Riley Morgan (CCS)","Sanya Harrow","No","Out of Scope",2.48,2.43,2.25,2.2,1.52,1.66,0.23,0.23
+"2,881|Active","2,881","PRJ-2,881","Active","Large","No","Lambda","","Iris","Dakota Ellis (CCS)","Greta Jarrow","No","Out of Scope",2.41,1.78,0.47,0.44,0.47,0.44,1.94,1.34
+"1,296|Active","1,296","PRJ-1,296","Active","Large","No","Delta","","Violet","Jamie Logan (CCS)","Theo Nash","Yes","Correction Pending",1.3,0.94,0.88,0.71,0.42,0.46,0.45,0.23
+"D112|Active","D112","PRJ-D112","Active","Large","Yes","Zeta","Alpha / Zeta","Begonia","Chris Parker (CCS)","Vera Chastain","Yes","Target Date Communicated",1.51,1.05,0.17,0.13,0.17,0.13,1.55,0.91
+"1,298|Active","1,298","PRJ-1,298","Active","Large","No","Delta","","Violet","Jamie Logan (CCS)","Kavya Lockhart","Yes","Correction Pending",1.74,1.2,1.23,0.88,0.43,0.32,0.45,0.32
+"118|Active","118","PRJ-118","Active","Large","No","Epsilon","","Daffodil","Pat Riley (CCS)","Diego Glenister","Yes","Correction Pending",2.14,1.37,2.16,1.36,0.2,0.05,0,0.01
+"D64|Active","D64","PRJ-D64","Active","Large","Yes","Theta","Theta / LifeScan","Primrose","Taylor Reed (CCS)","Zoya Keaton","Yes","Assessment Scheduled",1.33,0.56,0.18,0.55,0.16,0.1,1.15,0.01
+"178|Active","178","P17","Active","Medium","No","Gamma","","Lilac","Cameron Ellis (CCS)","Sasha Emberly","Yes","Assessment Completed",0.69,1.09,0.77,1.07,0.09,0.32,0,0.02
+"1,125|Active","1,125","PRJ-1,125","Active","Medium","No","Gamma","","Daisy","Riley Morgan (CCS)","Kavya Prescott","Yes","Assessment Scheduled",0.89,0.94,1.07,0.94,0.23,0.09,0,0
+"161|Active","161","PRJ-161","Active","Medium","No","Gamma","","Orchid","CCS Owner Alpha","Sofia Delacroix","No","Out of Scope",0.94,0.93,0.75,0.93,0.01,0.15,0.16,0.01
+"343|Active","343","PRJ-343","Active","Medium","No","Nu","","Marigold","CCS Owner Beta","Hana Yardley","Yes","Comm. Initiated",0.82,0.77,1.4,0.76,0.36,0.25,0,0.01
+"553|Active","553","p2","Active","Medium","No","Gamma","","Daisy","CCS Owner Gamma","Neve Whitlock","Yes","Assessment Completed",0.75,0.71,0.32,0.29,0.32,0.29,0.44,0.41
+"D4|Active","D4","PRJ-D4","Active","Medium","Yes","Eta","Iota / Eta","Jasmine","Morgan Blake (CCS)","Kaspar Rowntree","Yes","Comm. Initiated",1.19,1.06,1.24,0.91,0.15,0.18,0,0.14
+"285|Active","285","PRJ-285","Active","Medium","No","Rho","","Peony","Pat Riley (CCS)","Diego Glenister","Yes","Comm. Initiated",1.06,0.94,0.46,0.43,0.34,0.28,0.52,0.51
+"69|Active","69","P33","Active","Medium","No","Alpha","","Lotus","Jordan Taylor (CCS)","Freya Underhill","Yes","Assessment Completed",0.96,0.79,0.85,0.76,0.22,0.19,0.1,0.04
+"2,687|Active","2,687","PRJ-2,687","Active","Medium","No","Upsilon","","Camellia","Alex Vance (CCS)","Ivy Crandall","No","Out of Scope",0.81,0.62,0.18,0.16,0.18,0.16,0.62,0.47
+"305|Active","305","PRJ-305","Active","Medium","No","Alpha","","Carnation","Sam Quinn (CCS)","Priya Verity","Yes","On Hold",0.72,0.54,0.72,0.54,0.44,0.34,0,0
+"D96|Active","D96","PRJ-D96","Active","Medium","Yes","Nu","Eta / Tada / Nu","Clover","CCS Owner Delta","Zoya Stapleton","No","Out of Scope",0.71,0.51,0.15,0.13,0.15,0.12,0.49,0.38
+"399|Active","399","PRJ-399","Active","Medium","No","Iota","","Jasmine","CCS Owner Beta","Greta Jarrow","No","Out of Scope",1.22,0.87,1.38,0.87,0.25,0.09,0,0
+"1,643|Active","1,643","P24","Active","Medium","No","Delta","","Verbena","Jamie Logan (CCS)","Leila Everly","Yes","Assessment Completed",0.98,0.69,0.95,0.69,0.13,0.12,0.03,0
+"1,637|Active","1,637","P12","Active","Medium","No","Beta","","Hibiscus","Alex Vance (CCS)","Anouk Westmore","Yes","Assessment Completed",0.64,0.42,0.3,0.2,0.3,0.2,0.29,0.22
+"1,700 /  1,701 /  1,702 /  1,703|Active","1,700 /  1,701 /  1,702 /  1,703","PRJ-1,700 /  1,701 /  1,702 /  1,703","Active","Medium","No","Delta","","Rose","Jamie Logan (CCS)","Marcus Quarrier","Yes","Comm. Initiated",2.26,1.47,1.03,0.71,1.03,0.71,1.23,0.76
+"1,698|Active","1,698","P26","Active","Medium","No","Delta","","Hydrangea","Jamie Logan (CCS)","Owen Kestrel","Yes","Assessment Completed",0.65,0.42,0.31,0.21,0.31,0.21,0.34,0.21
+"D58|Active","D58","PRJ-D58","Active","Medium","Yes","Xi","Zeta / Iota / Xi","Lavender","CCS Owner Epsilon","Zoya Danforth","Yes","Target Date Communicated",0.96,0.56,0.69,0.43,0.5,0.36,0.06,0.13
+"2,482|Active","2,482","PRJ-2,482","Active","Medium","No","Lambda","","Dahlia","Dakota Ellis (CCS)","Lena Jessup","No","Out of Scope",0.87,0.5,0.44,0.26,0.44,0.26,0.46,0.25
+"2,481|Active","2,481","PRJ-2,481","Active","Medium","No","Lambda","","Dahlia","Dakota Ellis (CCS)","Adil Tolliver","No","Out of Scope",0.73,0.41,0.35,0.21,0.35,0.21,0.41,0.21
+"D90|Active","D90","PRJ-D90","Active","Medium","Yes","Beta","Chi / Iota / Beta","Hibiscus","Alex Vance (CCS)","Anouk Garrick","No","Out of Scope",0.78,0.44,0.23,0.13,0.23,0.13,0.48,0.31
+"1,640 /  2,753|Active","1,640 /  2,753","PRJ-1,640 /  2,753","Active","Medium","No","Epsilon","Epsilon / Mu (css, pceo diff)","Poppy","Pat Riley (CCS)","Priya Pendleton","Yes","On Hold",0.85,0.47,0.31,0.18,0.31,0.18,0.46,0.3
+"D66|Active","D66","PRJ-D66","Active","Medium","Yes","Theta","Kappa / Zeta / Theta / Peco","Primrose","Taylor Reed (CCS)","Leila Tolliver","Yes","Target Date Communicated",1.61,0.89,0.78,0.85,0.26,0.18,0.84,0.04
+"2,629|Active","2,629","PRJ-2,629","Active","Medium","No","Theta","","Poppy","Taylor Reed (CCS)","Adil Harrow","Yes","Comm. Initiated",1.07,0.53,0.35,0.17,0.35,0.17,0.62,0.36
+"1,704|Active","1,704","P27","Active","Medium","No","Delta","","Hydrangea","Jamie Logan (CCS)","Owen Kestrel","Yes","Assessment Completed",0.72,0.29,0.46,0.16,0.46,0.16,0.26,0.13
+"151|Active","151","PRJ-151","Active","Medium","No","Gamma","","Lilac","Cameron Ellis (CCS)","Sasha Emberly","No","Out of Scope",1,0.21,0.32,0.21,0.09,0.02,0.68,0
+"675|Completed","675","PRJ-675","Completed","Huge","No","Gamma","","Lupine","Avery Brooks (CCS)","Yara Havisham","No","Out of Scope (Completed)",2.8,2.53,2.8,2.53,0,0,0,0
+"1,004|Completed","1,004","PRJ-1,004","Completed","Huge","No","Theta","","Magnolia","Taylor Reed (CCS)","Adil Linden","No","Out of Scope (Completed)",2.79,2.41,2.79,2.41,0,0,0,0
+"1,017|Completed","1,017","PRJ-1,017","Completed","Huge","No","Theta","","Magnolia","Taylor Reed (CCS)","Priya Braddock","No","Out of Scope (Completed)",2.91,2.45,2.91,2.45,0,0,0,0
+"1,161|Completed","1,161","PRJ-1,161","Completed","Huge","No","Alpha","","Sunflower","Jordan Taylor (CCS)","Hana Danforth","No","Out of Scope (Completed)",2.91,2.34,2.91,2.34,0,0,0,0
+"1,160|Completed","1,160","PRJ-1,160","Completed","Huge","No","Alpha","","Carnation","Jordan Taylor (CCS)","Anika Ingram","No","Out of Scope (Completed)",2.69,1.84,2.69,1.84,0,0,0,0

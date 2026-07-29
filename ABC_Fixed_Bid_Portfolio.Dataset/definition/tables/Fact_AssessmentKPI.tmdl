@@ -1,0 +1,78 @@
+table Fact_AssessmentKPI
+	lineageTag: f3a4a84a-cf3d-4d20-b749-6674d8a9ab46
+
+	column SrNo
+		dataType: int64
+		formatString: 0
+		lineageTag: f8741e0d-71ba-4dcb-82ae-6f2cda9ce966
+		summarizeBy: none
+		sourceColumn: SrNo
+	column ProjectName
+		dataType: string
+		lineageTag: 1a9f35cb-ae60-4080-a3f6-242480585af5
+		summarizeBy: none
+		sourceColumn: ProjectName
+	column RevenueGroup
+		dataType: string
+		lineageTag: 6460a5e3-1776-4a90-8bbc-68b8d122fc86
+		summarizeBy: none
+		sourceColumn: RevenueGroup
+	column BusinessUnit
+		dataType: string
+		lineageTag: 8e62ea6c-9e1d-409d-a361-a7c54eb5d2e6
+		summarizeBy: none
+		sourceColumn: BusinessUnit
+	column LifecycleMarginPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: c62fbeee-b5c7-4128-a12e-e809b79dbf41
+		summarizeBy: none
+		sourceColumn: LifecycleMarginPct
+	column YTDMarginPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 1395250f-50df-465b-a130-50bfdad524e4
+		summarizeBy: none
+		sourceColumn: YTDMarginPct
+	column RiskScore
+		dataType: double
+		formatString: 0.0
+		lineageTag: a6ecb0d6-1dfd-4a04-9b18-357671b37fb7
+		summarizeBy: average
+		sourceColumn: RiskScore
+	column WorkAcceptanceGapPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 24c7b329-b33b-45c4-b4c8-7abb5a1bb07b
+		summarizeBy: none
+		sourceColumn: WorkAcceptanceGapPct
+	column UnbilledEffortPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: db71f259-7771-43cc-aa37-787ad7bb6b4d
+		summarizeBy: none
+		sourceColumn: UnbilledEffortPct
+	column NetProgramScore
+		dataType: double
+		formatString: 0.0
+		lineageTag: 9036b695-380e-4c28-99d6-3773bdc78e68
+		summarizeBy: average
+		sourceColumn: NetProgramScore
+	measure 'Assessed Projects' = COUNTROWS('Fact_AssessmentKPI')
+		lineageTag: 578d0484-7607-4ea5-8535-e8bb1d9a059b
+	measure 'Average Risk Score' = AVERAGE('Fact_AssessmentKPI'[RiskScore])
+		formatString: 0.00
+		lineageTag: dbf83433-a670-454f-b643-17d8711fb2af
+	measure 'Average Program Score' = AVERAGE('Fact_AssessmentKPI'[NetProgramScore])
+		formatString: 0.00
+		lineageTag: d1253e35-c9e8-457c-abc4-204889dd9ed4
+
+	partition Fact_AssessmentKPI = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(TargetFolder & "\Fact_AssessmentKPI.csv"),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"SrNo", Int64.Type}, {"ProjectName", type text}, {"RevenueGroup", type text}, {"BusinessUnit", type text}, {"LifecycleMarginPct", type number}, {"YTDMarginPct", type number}, {"RiskScore", type number}, {"WorkAcceptanceGapPct", type number}, {"UnbilledEffortPct", type number}, {"NetProgramScore", type number}})
+				in
+				    #"Changed Type"

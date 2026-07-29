@@ -1,0 +1,86 @@
+table Fact_BusinessUnit
+	lineageTag: 12881a77-ffce-44c2-af97-48fc37516edf
+
+	column BusinessUnit
+		dataType: string
+		lineageTag: 5428d55b-c8f9-4a18-a91f-cb61093faa14
+		summarizeBy: none
+		sourceColumn: BusinessUnit
+	column RevenueContributionPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: ffc205d0-d161-4224-9455-27401df14c10
+		summarizeBy: none
+		sourceColumn: RevenueContributionPct
+	column YTDMarginPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 9a8b56d0-56b0-4ba2-a251-9e1aa99574dd
+		summarizeBy: none
+		sourceColumn: YTDMarginPct
+	column YTDRevenue
+		dataType: double
+		formatString: 0.00
+		lineageTag: fbcd2c9f-d67f-4329-b94e-632ea9bdb707
+		summarizeBy: sum
+		sourceColumn: YTDRevenue
+	column YTDCost
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0cb7125f-511e-4265-a3e9-adfc8f5acd35
+		summarizeBy: sum
+		sourceColumn: YTDCost
+	column LifecycleMarginPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: be3898ee-e90c-4ece-b4e4-236f0989e795
+		summarizeBy: none
+		sourceColumn: LifecycleMarginPct
+	column LifecycleRevenue
+		dataType: double
+		formatString: 0.00
+		lineageTag: 2cbc8f25-0e08-4026-97bc-f22e0020d681
+		summarizeBy: sum
+		sourceColumn: LifecycleRevenue
+	column LifecycleCost
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0b78c05a-21de-4d52-b77f-3587fd4b360c
+		summarizeBy: sum
+		sourceColumn: LifecycleCost
+	column ActualMarginPct
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 41ab0cf5-1f55-447e-bcc6-bd99bbefd2b5
+		summarizeBy: none
+		sourceColumn: ActualMarginPct
+	column ActualRevenue
+		dataType: double
+		formatString: 0.00
+		lineageTag: 60c29d08-726b-4768-abf2-abd25ea5195c
+		summarizeBy: sum
+		sourceColumn: ActualRevenue
+	column ActualCost
+		dataType: double
+		formatString: 0.00
+		lineageTag: 6db93660-0531-408f-9538-be6dcd8a2dc5
+		summarizeBy: sum
+		sourceColumn: ActualCost
+	measure 'Business Units' = COUNTROWS('Fact_BusinessUnit')
+		lineageTag: a4c22251-0f94-4c6b-81f7-8a6dc9ccaa7b
+	measure 'Total BU Actual Revenue' = SUM('Fact_BusinessUnit'[ActualRevenue])
+		formatString: $#,##0.0,,"M"
+		lineageTag: c08ef9b1-b32d-4732-958a-be7e0e7035db
+	measure 'Total BU Actual Cost' = SUM('Fact_BusinessUnit'[ActualCost])
+		formatString: $#,##0.0,,"M"
+		lineageTag: 8df0b316-fb37-4fb7-9802-c88ea6d9acb1
+
+	partition Fact_BusinessUnit = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(TargetFolder & "\Fact_BusinessUnit.csv"),[Delimiter=",", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"BusinessUnit", type text}, {"RevenueContributionPct", type number}, {"YTDMarginPct", type number}, {"YTDRevenue", type number}, {"YTDCost", type number}, {"LifecycleMarginPct", type number}, {"LifecycleRevenue", type number}, {"LifecycleCost", type number}, {"ActualMarginPct", type number}, {"ActualRevenue", type number}, {"ActualCost", type number}})
+				in
+				    #"Changed Type"

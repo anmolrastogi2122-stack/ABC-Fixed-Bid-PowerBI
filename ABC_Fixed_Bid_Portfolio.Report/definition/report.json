@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/1.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "ABC_FixedBid_Program_Theme",
+      "type": "SharedResources"
+    }
+  },
+  "layoutOptimization": "None",
+  "publicCustomVisuals": [],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "ABC_FixedBid_Program_Theme",
+          "path": "StaticResources/SharedResources/BaseThemes/ABC_FixedBid_Program_Theme.json",
+          "type": "CustomTheme"
+        }
+      ]
+    }
+  ]
+}
