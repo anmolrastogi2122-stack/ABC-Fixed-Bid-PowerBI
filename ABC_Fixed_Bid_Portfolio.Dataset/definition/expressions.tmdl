@@ -1,5 +1,0 @@
-expression TargetFolder = "C:\PowerBI\ABC_FixedBid\Data" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
-	lineageTag: 9f7e07d5-e5dc-440e-be58-b21ac8dde860
-	queryGroup: Parameters
-
-	annotation PBI_Id = 7d5ab739d75343019a69bce939b1edbd

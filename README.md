@@ -21,8 +21,8 @@ views.
 | Path | What it is |
 |---|---|
 | `ABC_Fixed_Bid_Portfolio.pbip` | Project pointer file — open this in Power BI Desktop |
-| `ABC_Fixed_Bid_Portfolio.Dataset/` | Semantic model, as TMDL (tables, measures, relationships, Power Query) |
-| `ABC_Fixed_Bid_Portfolio.Report/` | Report definition (PBIR): 2 pages, 10 visuals, custom theme |
+| `ABC_Fixed_Bid_Portfolio.Dataset/` | Semantic model as TMSL (`model.bim`): tables, measures, relationships, Power Query |
+| `ABC_Fixed_Bid_Portfolio.Report/` | Report layout (`report.json`): 2 pages, 11 visuals |
 | `Data/` | Source CSVs the model imports (see below) |
 | `PowerQuery_M_Queries.pq` | Reference copy of the M queries used by each table's partition |
 | `DAX_Measure_Library.dax` | Reference copy of every measure defined in the model |
@@ -63,13 +63,30 @@ Relationships: `Fact_Project[BusinessUnit]` and
 
 ## Quick start
 
-1. Put the CSVs from `Data/` into a local folder (or OneDrive/SharePoint
-   folder synced locally).
-2. Open `ABC_Fixed_Bid_Portfolio.pbip` in Power BI Desktop.
-3. When prompted, update the `TargetFolder` parameter (Transform Data →
-   Manage Parameters) to point at that folder, then **Refresh**.
-4. **File → Save As → Power BI file (\*.pbix)** to produce the binary
+1. Open `ABC_Fixed_Bid_Portfolio.pbip` in Power BI Desktop.
+2. Set the `TargetFolder` parameter to the full path of this project's
+   `Data` folder: **Home → Transform data → Edit parameters**. (Its
+   default assumes the project sits in your `Downloads` folder; if you
+   extracted it elsewhere, point it at the right `...\Data` path.)
+3. **Home → Refresh**.
+4. Optionally apply the theme: **View → Themes → Browse for themes →**
+   `ABC_FixedBid_Program_Theme.json`.
+5. **File → Save As → Power BI file (\*.pbix)** to produce the binary
    deliverable.
-5. Optionally wire up `automation/` (PowerShell, Python, or the Power
+6. Optionally wire up `automation/` (PowerShell, Python, or the Power
    Automate flow JSON) to trigger a Power BI Service dataset refresh
    whenever the CSVs are updated.
+
+### Format note
+
+This project uses the **classic** PBIP layout — a TMSL `model.bim`
+semantic model and a classic `report.json` report layout. Power BI
+Desktop's newer TMDL and PBIR (enhanced metadata) formats are gated
+behind preview toggles under *Options → Preview features*, so the
+classic layout is used here to keep the project openable on a default
+Desktop install.
+
+### Units
+
+All revenue and cost figures are expressed in **millions**, e.g. a
+`LifecycleRevenue` of `4.09` means $4.09M.

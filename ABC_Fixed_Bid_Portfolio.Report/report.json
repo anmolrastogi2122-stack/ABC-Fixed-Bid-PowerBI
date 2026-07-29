@@ -1,0 +1,134 @@
+{
+  "id": 0,
+  "resourcePackages": [],
+  "sections": [
+    {
+      "id": 0,
+      "name": "ReportSection",
+      "displayName": "Portfolio Overview",
+      "ordinal": 0,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 20,
+          "z": 0,
+          "width": 200,
+          "height": 150,
+          "config": "{\"name\": \"vSlicerBasis\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 20, \"z\": 0, \"width\": 200, \"height\": 150, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"slicer\", \"projections\": {\"Values\": [{\"queryRef\": \"Dim_MarginBasis.MarginBasis\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Dim_MarginBasis\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"MarginBasis\"}, \"Name\": \"Dim_MarginBasis.MarginBasis\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Margin Basis'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 240,
+          "y": 20,
+          "z": 0,
+          "width": 180,
+          "height": 110,
+          "config": "{\"name\": \"vCardTotal\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 240, \"y\": 20, \"z\": 0, \"width\": 180, \"height\": 110, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Fact_Project.Total Projects\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_Project\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Total Projects\"}, \"Name\": \"Fact_Project.Total Projects\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Total Projects'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 440,
+          "y": 20,
+          "z": 0,
+          "width": 180,
+          "height": 110,
+          "config": "{\"name\": \"vCardActive\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 440, \"y\": 20, \"z\": 0, \"width\": 180, \"height\": 110, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Fact_Project.Active Projects\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_Project\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Active Projects\"}, \"Name\": \"Fact_Project.Active Projects\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Active Projects'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 640,
+          "y": 20,
+          "z": 0,
+          "width": 180,
+          "height": 110,
+          "config": "{\"name\": \"vCardRevenue\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 640, \"y\": 20, \"z\": 0, \"width\": 180, \"height\": 110, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Fact_Project.Selected Revenue\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_Project\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Selected Revenue\"}, \"Name\": \"Fact_Project.Selected Revenue\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Selected Revenue'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 840,
+          "y": 20,
+          "z": 0,
+          "width": 180,
+          "height": 110,
+          "config": "{\"name\": \"vCardMargin\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 840, \"y\": 20, \"z\": 0, \"width\": 180, \"height\": 110, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Fact_Project.Selected Margin %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_Project\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Selected Margin %\"}, \"Name\": \"Fact_Project.Selected Margin %\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Selected Margin %'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 20,
+          "y": 190,
+          "z": 0,
+          "width": 620,
+          "height": 300,
+          "config": "{\"name\": \"vTrend\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 190, \"z\": 0, \"width\": 620, \"height\": 300, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"lineChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Fact_MonthlyTrend.MonthLabel\"}], \"Series\": [{\"queryRef\": \"Fact_MonthlyTrend.Population\"}], \"Y\": [{\"queryRef\": \"Fact_MonthlyTrend.Trend Revenue\"}, {\"queryRef\": \"Fact_MonthlyTrend.Trend Cost\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_MonthlyTrend\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"MonthLabel\"}, \"Name\": \"Fact_MonthlyTrend.MonthLabel\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Population\"}, \"Name\": \"Fact_MonthlyTrend.Population\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Trend Revenue\"}, \"Name\": \"Fact_MonthlyTrend.Trend Revenue\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Trend Cost\"}, \"Name\": \"Fact_MonthlyTrend.Trend Cost\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Monthly Revenue & Cost Trend'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 660,
+          "y": 190,
+          "z": 0,
+          "width": 600,
+          "height": 300,
+          "config": "{\"name\": \"vBuRevenue\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 660, \"y\": 190, \"z\": 0, \"width\": 600, \"height\": 300, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Fact_BusinessUnit.BusinessUnit\"}], \"Y\": [{\"queryRef\": \"Fact_BusinessUnit.Total BU Actual Revenue\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_BusinessUnit\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"BusinessUnit\"}, \"Name\": \"Fact_BusinessUnit.BusinessUnit\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Total BU Actual Revenue\"}, \"Name\": \"Fact_BusinessUnit.Total BU Actual Revenue\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Actual Revenue by Business Unit'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ],
+      "config": "{}",
+      "filters": "[]",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "id": 1,
+      "name": "ReportSection1",
+      "displayName": "Delivery & Risk",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "x": 20,
+          "y": 20,
+          "z": 0,
+          "width": 760,
+          "height": 420,
+          "config": "{\"name\": \"vProjectTable\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 20, \"y\": 20, \"z\": 0, \"width\": 760, \"height\": 420, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"tableEx\", \"projections\": {\"Values\": [{\"queryRef\": \"Fact_Project.ProjectName\"}, {\"queryRef\": \"Fact_Project.ProgramStage\"}, {\"queryRef\": \"Fact_Project.Status\"}, {\"queryRef\": \"Fact_Project.BusinessUnit\"}, {\"queryRef\": \"Fact_Project.Total Lifecycle Revenue\"}, {\"queryRef\": \"Fact_Project.Total Lifecycle Cost\"}, {\"queryRef\": \"Fact_Project.Lifecycle Margin %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_Project\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"ProjectName\"}, \"Name\": \"Fact_Project.ProjectName\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"ProgramStage\"}, \"Name\": \"Fact_Project.ProgramStage\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Status\"}, \"Name\": \"Fact_Project.Status\"}, {\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"BusinessUnit\"}, \"Name\": \"Fact_Project.BusinessUnit\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Total Lifecycle Revenue\"}, \"Name\": \"Fact_Project.Total Lifecycle Revenue\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Total Lifecycle Cost\"}, \"Name\": \"Fact_Project.Total Lifecycle Cost\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Lifecycle Margin %\"}, \"Name\": \"Fact_Project.Lifecycle Margin %\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Project Detail'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 800,
+          "y": 20,
+          "z": 0,
+          "width": 460,
+          "height": 200,
+          "config": "{\"name\": \"vRiskByBu\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 800, \"y\": 20, \"z\": 0, \"width\": 460, \"height\": 200, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"clusteredBarChart\", \"projections\": {\"Category\": [{\"queryRef\": \"Fact_AssessmentKPI.BusinessUnit\"}], \"Y\": [{\"queryRef\": \"Fact_AssessmentKPI.Average Risk Score\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_AssessmentKPI\", \"Type\": 0}], \"Select\": [{\"Column\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"BusinessUnit\"}, \"Name\": \"Fact_AssessmentKPI.BusinessUnit\"}, {\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Average Risk Score\"}, \"Name\": \"Fact_AssessmentKPI.Average Risk Score\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Average Risk Score by Business Unit'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 800,
+          "y": 240,
+          "z": 0,
+          "width": 220,
+          "height": 110,
+          "config": "{\"name\": \"vCardAssessed\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 800, \"y\": 240, \"z\": 0, \"width\": 220, \"height\": 110, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Fact_AssessmentKPI.Assessed Projects\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_AssessmentKPI\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Assessed Projects\"}, \"Name\": \"Fact_AssessmentKPI.Assessed Projects\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Assessed Projects'\"}}}}}]}}}",
+          "filters": "[]"
+        },
+        {
+          "x": 1040,
+          "y": 240,
+          "z": 0,
+          "width": 220,
+          "height": 110,
+          "config": "{\"name\": \"vCardRisk\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 1040, \"y\": 240, \"z\": 0, \"width\": 220, \"height\": 110, \"tabOrder\": 0}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"Fact_AssessmentKPI.Average Risk Score\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"e0\", \"Entity\": \"Fact_AssessmentKPI\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"e0\"}}, \"Property\": \"Average Risk Score\"}, \"Name\": \"Fact_AssessmentKPI.Average Risk Score\"}]}, \"drillFilterOtherVisuals\": true, \"objects\": {}, \"vcObjects\": {\"title\": [{\"properties\": {\"show\": {\"expr\": {\"Literal\": {\"Value\": \"true\"}}}, \"text\": {\"expr\": {\"Literal\": {\"Value\": \"'Average Risk Score'\"}}}}}]}}}",
+          "filters": "[]"
+        }
+      ],
+      "config": "{}",
+      "filters": "[]",
+      "displayOption": 1,
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "config": "{\"version\": \"5.43\", \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"settings\": {\"useStylableVisualContainerHeader\": true}}",
+  "layoutOptimization": 0,
+  "filters": "[]"
+}
