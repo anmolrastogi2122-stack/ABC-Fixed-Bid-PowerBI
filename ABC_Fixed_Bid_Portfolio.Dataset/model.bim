@@ -1,0 +1,643 @@
+{
+  "name": "ABC_Fixed_Bid_Portfolio",
+  "compatibilityLevel": 1550,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "expressions": [
+      {
+        "name": "TargetFolder",
+        "kind": "m",
+        "expression": "\"C:\\Users\\anmolrastogi\\Downloads\\ABC_Fixed_Bid_Portfolio_PBIP\\Data\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]"
+      }
+    ],
+    "tables": [
+      {
+        "name": "Fact_Project",
+        "columns": [
+          {
+            "name": "ProjectKey",
+            "dataType": "string",
+            "sourceColumn": "ProjectKey",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "WBS_ID",
+            "dataType": "string",
+            "sourceColumn": "WBS_ID",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProjectName",
+            "dataType": "string",
+            "sourceColumn": "ProjectName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Status",
+            "dataType": "string",
+            "sourceColumn": "Status",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueGroup",
+            "dataType": "string",
+            "sourceColumn": "RevenueGroup",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MultiWBS",
+            "dataType": "string",
+            "sourceColumn": "MultiWBS",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnit",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "AllBUs",
+            "dataType": "string",
+            "sourceColumn": "AllBUs",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Account",
+            "dataType": "string",
+            "sourceColumn": "Account",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "CCS",
+            "dataType": "string",
+            "sourceColumn": "CCS",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "PECO",
+            "dataType": "string",
+            "sourceColumn": "PECO",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Program_Onboarded",
+            "dataType": "string",
+            "sourceColumn": "Program_Onboarded",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "ProgramStage",
+            "dataType": "string",
+            "sourceColumn": "ProgramStage",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LifecycleRevenue",
+            "dataType": "double",
+            "sourceColumn": "LifecycleRevenue",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "LifecycleCost",
+            "dataType": "double",
+            "sourceColumn": "LifecycleCost",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "ActualRevenue",
+            "dataType": "double",
+            "sourceColumn": "ActualRevenue",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "ActualCost",
+            "dataType": "double",
+            "sourceColumn": "ActualCost",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "YTDRevenue",
+            "dataType": "double",
+            "sourceColumn": "YTDRevenue",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "YTDCost",
+            "dataType": "double",
+            "sourceColumn": "YTDCost",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "FutureRevenue",
+            "dataType": "double",
+            "sourceColumn": "FutureRevenue",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "FutureCost",
+            "dataType": "double",
+            "sourceColumn": "FutureCost",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Projects",
+            "expression": "COUNTROWS('Fact_Project')",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Active Projects",
+            "expression": "CALCULATE([Total Projects], 'Fact_Project'[Status] = \"Active\")",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Completed Projects",
+            "expression": "CALCULATE([Total Projects], 'Fact_Project'[Status] = \"Completed\")",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Total Lifecycle Revenue",
+            "expression": "SUM('Fact_Project'[LifecycleRevenue])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Total Lifecycle Cost",
+            "expression": "SUM('Fact_Project'[LifecycleCost])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Lifecycle Margin %",
+            "expression": "VAR Rev = [Total Lifecycle Revenue]\nVAR Cost = [Total Lifecycle Cost]\nRETURN DIVIDE(Rev - Cost, Rev, 0)",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Total Actual Revenue",
+            "expression": "SUM('Fact_Project'[ActualRevenue])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Total Actual Cost",
+            "expression": "SUM('Fact_Project'[ActualCost])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Actual Margin %",
+            "expression": "VAR Rev = [Total Actual Revenue]\nVAR Cost = [Total Actual Cost]\nRETURN DIVIDE(Rev - Cost, Rev, 0)",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Total YTD Revenue",
+            "expression": "SUM('Fact_Project'[YTDRevenue])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Total YTD Cost",
+            "expression": "SUM('Fact_Project'[YTDCost])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "YTD Margin %",
+            "expression": "VAR Rev = [Total YTD Revenue]\nVAR Cost = [Total YTD Cost]\nRETURN DIVIDE(Rev - Cost, Rev, 0)",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Total Future Revenue",
+            "expression": "SUM('Fact_Project'[FutureRevenue])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Total Future Cost",
+            "expression": "SUM('Fact_Project'[FutureCost])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Future Margin %",
+            "expression": "VAR Rev = [Total Future Revenue]\nVAR Cost = [Total Future Cost]\nRETURN DIVIDE(Rev - Cost, Rev, 0)",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "Selected Margin Basis",
+            "expression": "SELECTEDVALUE('Dim_MarginBasis'[MarginBasis], \"Actual\")"
+          },
+          {
+            "name": "Selected Revenue",
+            "expression": "SWITCH(\n    [Selected Margin Basis],\n    \"Lifecycle\", [Total Lifecycle Revenue],\n    \"YTD\", [Total YTD Revenue],\n    \"Future\", [Total Future Revenue],\n    [Total Actual Revenue]\n)",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Selected Cost",
+            "expression": "SWITCH(\n    [Selected Margin Basis],\n    \"Lifecycle\", [Total Lifecycle Cost],\n    \"YTD\", [Total YTD Cost],\n    \"Future\", [Total Future Cost],\n    [Total Actual Cost]\n)",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Selected Margin %",
+            "expression": "VAR Rev = [Selected Revenue]\nVAR Cost = [Selected Cost]\nRETURN DIVIDE(Rev - Cost, Rev, 0)",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Project",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(TargetFolder & \"\\Fact_Project.csv\"),[Delimiter=\",\", Columns=21, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProjectKey\", type text}, {\"WBS_ID\", type text}, {\"ProjectName\", type text}, {\"Status\", type text}, {\"RevenueGroup\", type text}, {\"MultiWBS\", type text}, {\"BusinessUnit\", type text}, {\"AllBUs\", type text}, {\"Account\", type text}, {\"CCS\", type text}, {\"PECO\", type text}, {\"Program_Onboarded\", type text}, {\"ProgramStage\", type text}, {\"LifecycleRevenue\", type number}, {\"LifecycleCost\", type number}, {\"ActualRevenue\", type number}, {\"ActualCost\", type number}, {\"YTDRevenue\", type number}, {\"YTDCost\", type number}, {\"FutureRevenue\", type number}, {\"FutureCost\", type number}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_MonthlyTrend",
+        "columns": [
+          {
+            "name": "Population",
+            "dataType": "string",
+            "sourceColumn": "Population",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthLabel",
+            "dataType": "string",
+            "sourceColumn": "MonthLabel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "MonthDate",
+            "dataType": "dateTime",
+            "sourceColumn": "MonthDate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Revenue",
+            "dataType": "double",
+            "sourceColumn": "Revenue",
+            "summarizeBy": "sum",
+            "formatString": "#,0.000"
+          },
+          {
+            "name": "Cost",
+            "dataType": "double",
+            "sourceColumn": "Cost",
+            "summarizeBy": "sum",
+            "formatString": "#,0.000"
+          },
+          {
+            "name": "MarginPct",
+            "dataType": "double",
+            "sourceColumn": "MarginPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Trend Revenue",
+            "expression": "SUM('Fact_MonthlyTrend'[Revenue])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Trend Cost",
+            "expression": "SUM('Fact_MonthlyTrend'[Cost])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Trend Margin %",
+            "expression": "VAR Rev = [Trend Revenue]\nVAR Cost = [Trend Cost]\nRETURN DIVIDE(Rev - Cost, Rev, 0)",
+            "formatString": "0.0%"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_MonthlyTrend",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(TargetFolder & \"\\Fact_MonthlyTrend.csv\"),[Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Population\", type text}, {\"MonthLabel\", type text}, {\"MonthDate\", type date}, {\"Revenue\", type number}, {\"Cost\", type number}, {\"MarginPct\", type number}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_BusinessUnit",
+        "columns": [
+          {
+            "name": "BusinessUnit",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueContributionPct",
+            "dataType": "double",
+            "sourceColumn": "RevenueContributionPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "YTDMarginPct",
+            "dataType": "double",
+            "sourceColumn": "YTDMarginPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "YTDRevenue",
+            "dataType": "double",
+            "sourceColumn": "YTDRevenue",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "YTDCost",
+            "dataType": "double",
+            "sourceColumn": "YTDCost",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "LifecycleMarginPct",
+            "dataType": "double",
+            "sourceColumn": "LifecycleMarginPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "LifecycleRevenue",
+            "dataType": "double",
+            "sourceColumn": "LifecycleRevenue",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "LifecycleCost",
+            "dataType": "double",
+            "sourceColumn": "LifecycleCost",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "ActualMarginPct",
+            "dataType": "double",
+            "sourceColumn": "ActualMarginPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "ActualRevenue",
+            "dataType": "double",
+            "sourceColumn": "ActualRevenue",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "ActualCost",
+            "dataType": "double",
+            "sourceColumn": "ActualCost",
+            "summarizeBy": "sum",
+            "formatString": "#,0.00"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Business Units",
+            "expression": "COUNTROWS('Fact_BusinessUnit')",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Total BU Actual Revenue",
+            "expression": "SUM('Fact_BusinessUnit'[ActualRevenue])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Total BU Actual Cost",
+            "expression": "SUM('Fact_BusinessUnit'[ActualCost])",
+            "formatString": "$#,##0.00"
+          },
+          {
+            "name": "Total BU YTD Revenue",
+            "expression": "SUM('Fact_BusinessUnit'[YTDRevenue])",
+            "formatString": "$#,##0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_BusinessUnit",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(TargetFolder & \"\\Fact_BusinessUnit.csv\"),[Delimiter=\",\", Columns=11, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"BusinessUnit\", type text}, {\"RevenueContributionPct\", type number}, {\"YTDMarginPct\", type number}, {\"YTDRevenue\", type number}, {\"YTDCost\", type number}, {\"LifecycleMarginPct\", type number}, {\"LifecycleRevenue\", type number}, {\"LifecycleCost\", type number}, {\"ActualMarginPct\", type number}, {\"ActualRevenue\", type number}, {\"ActualCost\", type number}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_AssessmentKPI",
+        "columns": [
+          {
+            "name": "SrNo",
+            "dataType": "int64",
+            "sourceColumn": "SrNo",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "ProjectName",
+            "dataType": "string",
+            "sourceColumn": "ProjectName",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "RevenueGroup",
+            "dataType": "string",
+            "sourceColumn": "RevenueGroup",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "BusinessUnit",
+            "dataType": "string",
+            "sourceColumn": "BusinessUnit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "LifecycleMarginPct",
+            "dataType": "double",
+            "sourceColumn": "LifecycleMarginPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "YTDMarginPct",
+            "dataType": "double",
+            "sourceColumn": "YTDMarginPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "RiskScore",
+            "dataType": "double",
+            "sourceColumn": "RiskScore",
+            "summarizeBy": "average",
+            "formatString": "#,0.0"
+          },
+          {
+            "name": "WorkAcceptanceGapPct",
+            "dataType": "double",
+            "sourceColumn": "WorkAcceptanceGapPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "UnbilledEffortPct",
+            "dataType": "double",
+            "sourceColumn": "UnbilledEffortPct",
+            "summarizeBy": "none",
+            "formatString": "0.0%"
+          },
+          {
+            "name": "NetProgramScore",
+            "dataType": "double",
+            "sourceColumn": "NetProgramScore",
+            "summarizeBy": "average",
+            "formatString": "#,0.0"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Assessed Projects",
+            "expression": "COUNTROWS('Fact_AssessmentKPI')",
+            "formatString": "#,0"
+          },
+          {
+            "name": "Average Risk Score",
+            "expression": "AVERAGE('Fact_AssessmentKPI'[RiskScore])",
+            "formatString": "#,0.00"
+          },
+          {
+            "name": "Average Program Score",
+            "expression": "AVERAGE('Fact_AssessmentKPI'[NetProgramScore])",
+            "formatString": "#,0.00"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_AssessmentKPI",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(TargetFolder & \"\\Fact_AssessmentKPI.csv\"),[Delimiter=\",\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"SrNo\", Int64.Type}, {\"ProjectName\", type text}, {\"RevenueGroup\", type text}, {\"BusinessUnit\", type text}, {\"LifecycleMarginPct\", type number}, {\"YTDMarginPct\", type number}, {\"RiskScore\", type number}, {\"WorkAcceptanceGapPct\", type number}, {\"UnbilledEffortPct\", type number}, {\"NetProgramScore\", type number}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Census",
+        "columns": [
+          {
+            "name": "Population",
+            "dataType": "string",
+            "sourceColumn": "Population",
+            "summarizeBy": "none",
+            "sortByColumn": "SortOrder"
+          },
+          {
+            "name": "SortOrder",
+            "dataType": "int64",
+            "sourceColumn": "SortOrder",
+            "summarizeBy": "none",
+            "formatString": "0"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Census",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(TargetFolder & \"\\Dim_Census.csv\"),[Delimiter=\",\", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Population\", type text}, {\"SortOrder\", Int64.Type}, {\"Description\", type text}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_MarginBasis",
+        "columns": [
+          {
+            "name": "MarginBasis",
+            "dataType": "string",
+            "sourceColumn": "MarginBasis",
+            "summarizeBy": "none",
+            "sortByColumn": "SortOrder"
+          },
+          {
+            "name": "SortOrder",
+            "dataType": "int64",
+            "sourceColumn": "SortOrder",
+            "summarizeBy": "none",
+            "formatString": "0"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_MarginBasis",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(TargetFolder & \"\\Dim_MarginBasis.csv\"),[Delimiter=\",\", Columns=2, Encoding=65001, QuoteStyle=QuoteStyle.Csv]),\n    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),\n    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"MarginBasis\", type text}, {\"SortOrder\", Int64.Type}})\nin\n    #\"Changed Type\""
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "rel_project_bu",
+        "fromTable": "Fact_Project",
+        "fromColumn": "BusinessUnit",
+        "toTable": "Fact_BusinessUnit",
+        "toColumn": "BusinessUnit"
+      },
+      {
+        "name": "rel_assessment_bu",
+        "fromTable": "Fact_AssessmentKPI",
+        "fromColumn": "BusinessUnit",
+        "toTable": "Fact_BusinessUnit",
+        "toColumn": "BusinessUnit"
+      },
+      {
+        "name": "rel_trend_census",
+        "fromTable": "Fact_MonthlyTrend",
+        "fromColumn": "Population",
+        "toTable": "Dim_Census",
+        "toColumn": "Population"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      }
+    ]
+  }
+}
